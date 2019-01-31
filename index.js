@@ -1,12 +1,9 @@
 const crawl = require('./lib/crawl')
 const parse = require('./lib/parse')
 const file = require('./lib/file')
-
-const pattern = {
-  title: 'title'
-}
-
-let urls = process.argv.splice(2)
+const config = require('./lib/config')
+const FILE = './data/links.json'
+const urls = process.argv.splice(2)
 
 if (!urls.length) {
   console.log('No URLs provided!')
@@ -16,7 +13,7 @@ if (!urls.length) {
 ; (async () => {
   for (let url of urls) {
     let html = await crawl(url)
-    let parsed = await parse(html, pattern)
+    let parsed = await parse(html, config.pattern)
     console.log(parsed)
   }
 })()
