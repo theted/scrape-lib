@@ -1,8 +1,5 @@
-const crawl = require('./lib/crawl')
-const parse = require('./lib/parse')
-const file = require('./lib/file')
+const scraper = require('./export')
 const config = require('./lib/config')
-const FILE = './data/links.json'
 const urls = process.argv.splice(2)
 
 if (!urls.length) {
@@ -12,8 +9,6 @@ if (!urls.length) {
 
 ; (async () => {
   for (let url of urls) {
-    let html = await crawl(url)
-    let parsed = await parse(html, config.pattern)
-    console.log(parsed)
+    console.log(await scraper.scrape(url, config.pattern))
   }
 })()
