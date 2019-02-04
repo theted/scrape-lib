@@ -108,10 +108,18 @@ let secrets = scraper.scrape(url + 'secret-url', pattern)
 
 ### ```scraper.download(remote, local)```
 Download a remote resource
-
 ```js
 // asynchronously download an (potentially very large!) image
 scraper.download('http://example.com/img/huge-img.jpg', './local/image.jpg').then(path => {
   console.log('Image completed download!')
 })
+```
+
+### ```scraper.links(url)```
+Returns an array of all unique links of a page.
+```js
+// log all links from github.com
+scraper
+  .links('https://github.com')
+  .then(console.log)
 ```
