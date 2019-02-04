@@ -5,6 +5,7 @@ Toolkit for scraping the web!
 ## Features
 - Fast! Asynchronous architecture enabling multiple concurrent requests
 - Use jQuery HTML selector syntax
+- Cookie handling allowing persistent sessions / log-ins etc
 
 
 ## Installation
@@ -55,7 +56,7 @@ let result = await scraper.send('http://example.com', {hello: 'World!'})
 Parse `HTML` according to a given `pattern` (-> key:value object of HTML selectors). Returns an object with matching results.
 
 ```js
-let html = '<html><head>[...]' // HTML string
+let html = '<html>[...]' // HTML string
 let pattern = {
   title: 'title',
   links: 'a::href',
@@ -71,10 +72,47 @@ Courtesy method, combining `crawl` and `parse`.
 
 ```js
 let url = 'https://github.com'
-let pattern = {images: 'img::src'}
+let pattern = { images: 'img::src' }
 
 ; (async () => {
   let result = await scraper.scrape(url, pattern)
   console.log(result)
 })()
+```
+
+
+### ```scraper.process(url, pattern, callback)```
+Wraps `scrape` method around a callback function, useful for cleaning up code
+
+```js
+// reverse the title of a site
+const url = 'https://github.com'
+const pattern = { title: 'title' }
+const reverse = str => str.split('').reverse().join('')
+const processor = data => reverse(data.title[0])
+scraper.process(url, pattern, processor).then(console.log)
+```
+
+
+### ```scraper.login(url, username, password)```
+Perform a login to a site. Automatically tries to figure out field names for the login form by crawling the URL of the login form first.
+
+```js
+// login to some site, then grab some secret information
+let url = 'https://some-site.com/'
+let pattern = {sectrets: 'h2.secret'}
+let loginResult = scraper.login(url + 'myUsername', 'passw0rd')
+let secrets = scraper.scrape(url + 'secret-url', pattern)
+//  ^ now we have all secrets!
+```
+
+### ```scraper.download(remote, local)```
+Download a remote resource
+
+```js
+// asynchronously download an (potentially very large!) image
+// [TODO]
+scraper.download('http://example.com/img/huge-img.jpg', './local/image.jpg').then(path => {
+  console.log('Image completed download!)
+})
 ```
