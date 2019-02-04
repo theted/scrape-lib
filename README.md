@@ -111,8 +111,7 @@ Download a remote resource
 
 ```js
 // asynchronously download an (potentially very large!) image
-// [TODO]
 scraper.download('http://example.com/img/huge-img.jpg', './local/image.jpg').then(path => {
-  console.log('Image completed download!)
+  console.log('Image completed download!')
 })
 ```
