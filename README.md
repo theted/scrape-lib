@@ -123,3 +123,7 @@ scraper
   .links('https://github.com')
   .then(console.log)
 ```
+
+
+## Examples
+More examples available in the [examples](examples/README.md) directory.
