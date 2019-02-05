@@ -11,19 +11,24 @@ Toolkit for scraping the web!
 ## Installation
 Since this project is not correctly on npm, there are some alternative methods of including it.
 
-Specify the URL as a dependency in your `package.json`:
+**Alternative 1:** specify the URL as a dependency in your `package.json`:
 ```json
 "scrape-lib": "https://github.com/theted/scrape-lib.git#master"
 ```
 
-Alternatively, clone this repo and include it directly:
+**Alternative 2:** add this repo as a `subtree` to your git repo:
+```
+git subtree add --prefix lib/scrape-lib https://github.com/theted/scrape-lib.git master --squash
+```
+
+**Alternative 3:** clone this repo and include it directly:
 ```
 git clone git@github.com:theted/scrape-lib.git
 ```
 
 
 ## Initialize
-Simple include the module as a dependency:
+Simple require the module as a dependency:
 ```js
 const scraper = require('scrape-lib')
 ```
