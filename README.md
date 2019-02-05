@@ -126,4 +126,4 @@ scraper
 
 
 ## Examples
-More examples available in the [examples](examples/README.md) directory.
+More examples available in the [examples](examples/) directory.
