@@ -8,9 +8,6 @@ if (!urls.length) {
 }
 
 ; (async () => {
-  Promise.all(urls.map(url => {
-    return scraper.links(url)
-  })).then(async results => {
-    console.log(results)
-  })
+  let results = await Promise.all(urls.map(url => scraper.links(url)))
+  console.log(results)
 })()
