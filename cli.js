@@ -1,6 +1,5 @@
 const scraper = require('./')
 const file = require('./lib/file')
-const config = require('./lib/config')
 const FILE = './urls.json'
 const urls = process.argv.splice(2)
 
