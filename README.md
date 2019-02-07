@@ -130,5 +130,19 @@ scraper
 ```
 
 
+## Debug mode
+Enable logging of requests by enabling *debug mode*. This is useful for debugging order of operations, request response times, etc.
+
+Either pass the `debug` parameter when calling a file:
+```
+node examples/github.js theted debug
+```
+
+...or set the global debug variable to true directly in the file
+```js
+global.DEBUG = true
+```
+
+
 ## Examples
-More examples available in the [examples](examples/) directory.
+Additional examples are available in the [examples](examples/) directory.
