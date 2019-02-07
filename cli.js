@@ -12,5 +12,6 @@ if (!urls.length) {
   let results = await Promise.all(urls.map(url => scraper.links(url)))
   console.log(results)
   let allLinks = await file.append(FILE, results)
+  console.log(allLinks)
   console.log('Updated links file ->', allLinks.length, 'total links')
 })()
