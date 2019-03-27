@@ -7,5 +7,7 @@ const login = require('./lib/login')
 const download = require('./lib/download')
 const links = require('./lib/links')
 const helpers = require('./lib/helpers')
+const config = require('./lib/config')
+const getJson = require('./lib/getJson')
 
-module.exports = { crawl, send, parse, scrape, process, login, download, links, helpers }
+module.exports = { crawl, send, parse, scrape, process, login, download, links, helpers, config, getJson }
